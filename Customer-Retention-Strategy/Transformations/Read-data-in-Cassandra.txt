@@ -26,13 +26,13 @@ spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 object ReadData {
 
 def readSurvey(spark : SparkSession) : DataFrame = {
-	val surveyDF = sqlContext.read.format("org.apache.spark.sql.cassandra").options(Map( "table" -> "survey", "keyspace" -> "edureka_653389"))
+	val surveyDF = sqlContext.read.format("org.apache.spark.sql.cassandra").options(Map( "table" -> "survey", "keyspace" -> "edureka_738583"))
 	.load()
 	return surveyDF
 }
 
 def readCase(spark : SparkSession) : DataFrame = {
-	val caseDF = sqlContext.read.format("org.apache.spark.sql.cassandra").options(Map( "table" -> "case", "keyspace" -> "edureka_653389"))
+	val caseDF = sqlContext.read.format("org.apache.spark.sql.cassandra").options(Map( "table" -> "case", "keyspace" -> "edureka_738583"))
 	.load()
 	return caseDF
 }

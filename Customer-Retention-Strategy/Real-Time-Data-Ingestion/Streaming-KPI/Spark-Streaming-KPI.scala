@@ -22,10 +22,10 @@ println(" ")
 val spark = Utils.get_spark_session("Read Hive Dimension Tables")
 
 // ----------------------- fetching case category dimension data from -----------------------
-caseCategoryDF = spark.sql("select distinct category_key, sub_category_key, priority from edureka_653389.futurecart_case_category_details")
+caseCategoryDF = spark.sql("select distinct category_key, sub_category_key, priority from edureka_738583.futurecart_case_category_details")
 
 // ----------------------- fetching case priority dimension data from -----------------------
-casePriorityDF = spark.sql("select distinct priority, severity from edureka_653389.futurecart_case_priority_details")
+casePriorityDF = spark.sql("select distinct priority, severity from edureka_738583.futurecart_case_priority_details")
 
 // ----------------------- case category && case priority dataframe -----------------------
 joinDF = caseCategoryDF.join(casePriorityDF, caseCategoryDF("priority") === casePriorityDF("priority"), "inner")

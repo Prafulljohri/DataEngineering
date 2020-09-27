@@ -26,10 +26,10 @@ spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 object LoadRealTimeStream {
 
 def loadSurvey( spark : SparkSession, surveyDF : DataFrame) : Unit = {
-	surveyDF.write.mode("append").format("org.apache.spark.sql.cassandra").options(Map( "table" -> "survey", "keyspace" -> "edureka_653389", "output.consistency.level" -> "ALL", "ttl" -> "10000000")).save()
+	surveyDF.write.mode("append").format("org.apache.spark.sql.cassandra").options(Map( "table" -> "survey", "keyspace" -> "edureka_738583", "output.consistency.level" -> "ALL", "ttl" -> "10000000")).save()
   }
 
 def loadCase( spark : SparkSession, caseDF : DataFrame) : Unit = {
-	caseDF.write.mode("append").format("org.apache.spark.sql.cassandra").options(Map( "table" -> "case", "keyspace" -> "edureka_653389", "output.consistency.level" -> "ALL", "ttl" -> "10000000")).save()
+	caseDF.write.mode("append").format("org.apache.spark.sql.cassandra").options(Map( "table" -> "case", "keyspace" -> "edureka_738583", "output.consistency.level" -> "ALL", "ttl" -> "10000000")).save()
   }
 }

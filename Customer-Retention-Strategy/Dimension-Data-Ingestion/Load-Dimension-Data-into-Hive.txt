@@ -1,66 +1,61 @@
 
 +++++++++++++ Data cleansing +++++++++++++
 /// move data from main directory to our drectory to avoid loss of data in main directory ///
-/// this is already done in previous step, so skip below 2 commands and continue with shell script///
-hdfs dfs -mkdir industry_grade_project
-hdfs dfs -cp /bigdatapgp/common_folder/project_futurecart/batchdata/* industry_grade_project/
+/// this is already done in previous step, so skip below 2 commands and continue with shell commands///
+hdfs dfs -mkdir industryGradeProject
+hdfs dfs -cp /bigdatapgp/common_folder/project_futurecart/batchdata/* industryGradeProject/
 
 
 
 /// remover header from file to avoid header being loaded in the tables in the later stage ///
-/// creating shell script for the above task ///
 
-vi remover_header_dim.sh
+hdfs dfs -get industryGradeProject/futurecart_calendar_details.txt industryGradeProject/
+sed '1d' industryGradeProject/futurecart_calendar_details.txt > industryGradeProject/Cfuturecart_calendar_details.txt
+hdfs dfs -rm industryGradeProject/futurecart_calendar_details.txt
+hdfs dfs -put industryGradeProject/Cfuturecart_calendar_details.txt industryGradeProject/futurecart_calendar_details.txt
 
-hdfs dfs -copyToLocal industry_grade_project/futurecart_calendar_details.txt industry_grade_project/
-sed '1d' industry_grade_project/futurecart_calendar_details.txt > industry_grade_project/Cfuturecart_calendar_details.txt
-hdfs dfs -rm industry_grade_project/futurecart_calendar_details.txt
-hdfs dfs -put industry_grade_project/Cfuturecart_calendar_details.txt industry_grade_project/futurecart_calendar_details.txt
+hdfs dfs -get industryGradeProject/futurecart_call_center_details.txt industryGradeProject/
+sed '1d' industryGradeProject/futurecart_call_center_details.txt > industryGradeProject/Cfuturecart_call_center_details.txt
+hdfs dfs -rm industryGradeProject/futurecart_call_center_details.txt
+hdfs dfs -put industryGradeProject/Cfuturecart_call_center_details.txt industryGradeProject/futurecart_call_center_details.txt
 
-hdfs dfs -copyToLocal industry_grade_project/futurecart_call_center_details.txt industry_grade_project/
-sed '1d' industry_grade_project/futurecart_call_center_details.txt > industry_grade_project/Cfuturecart_call_center_details.txt
-hdfs dfs -rm industry_grade_project/futurecart_call_center_details.txt
-hdfs dfs -put industry_grade_project/Cfuturecart_call_center_details.txt industry_grade_project/futurecart_call_center_details.txt
+hdfs dfs -get industryGradeProject/futurecart_case_category_details.txt industryGradeProject/
+sed '1d' industryGradeProject/futurecart_case_category_details.txt > industryGradeProject/Cfuturecart_case_category_details.txt
+hdfs dfs -rm industryGradeProject/futurecart_case_category_details.txt
+hdfs dfs -put industryGradeProject/Cfuturecart_case_category_details.txt industryGradeProject/futurecart_case_category_details.txt
 
-hdfs dfs -copyToLocal industry_grade_project/futurecart_case_category_details.txt industry_grade_project/
-sed '1d' industry_grade_project/futurecart_case_category_details.txt > industry_grade_project/Cfuturecart_case_category_details.txt
-hdfs dfs -rm industry_grade_project/futurecart_case_category_details.txt
-hdfs dfs -put industry_grade_project/Cfuturecart_case_category_details.txt industry_grade_project/futurecart_case_category_details.txt
+hdfs dfs -get industryGradeProject/futurecart_case_country_details.txt industryGradeProject/
+sed '1d' industryGradeProject/futurecart_case_country_details.txt > industryGradeProject/Cfuturecart_case_country_details.txt
+hdfs dfs -rm industryGradeProject/futurecart_case_country_details.txt
+hdfs dfs -put industryGradeProject/Cfuturecart_case_country_details.txt industryGradeProject/futurecart_case_country_details.txt
 
-hdfs dfs -copyToLocal industry_grade_project/futurecart_case_country_details.txt industry_grade_project/
-sed '1d' industry_grade_project/futurecart_case_country_details.txt > industry_grade_project/Cfuturecart_case_country_details.txt
-hdfs dfs -rm industry_grade_project/futurecart_case_country_details.txt
-hdfs dfs -put industry_grade_project/Cfuturecart_case_country_details.txt industry_grade_project/futurecart_case_country_details.txt
+hdfs dfs -get industryGradeProject/futurecart_case_priority_details.txt industryGradeProject/
+sed '1d' industryGradeProject/futurecart_case_priority_details.txt > industryGradeProject/Cfuturecart_case_priority_details.txt
+hdfs dfs -rm industryGradeProject/futurecart_case_priority_details.txt
+hdfs dfs -put industryGradeProject/Cfuturecart_case_priority_details.txt industryGradeProject/futurecart_case_priority_details.txt
 
-hdfs dfs -copyToLocal industry_grade_project/futurecart_case_priority_details.txt industry_grade_project/
-sed '1d' industry_grade_project/futurecart_case_priority_details.txt > industry_grade_project/Cfuturecart_case_priority_details.txt
-hdfs dfs -rm industry_grade_project/futurecart_case_priority_details.txt
-hdfs dfs -put industry_grade_project/Cfuturecart_case_priority_details.txt industry_grade_project/futurecart_case_priority_details.txt
+hdfs dfs -get industryGradeProject/futurecart_employee_details.txt industryGradeProject/
+sed '1d' industryGradeProject/futurecart_employee_details.txt > industryGradeProject/Cfuturecart_employee_details.txt
+hdfs dfs -rm industryGradeProject/futurecart_employee_details.txt
+hdfs dfs -put industryGradeProject/Cfuturecart_employee_details.txt industryGradeProject/futurecart_employee_details.txt
 
-hdfs dfs -copyToLocal industry_grade_project/futurecart_employee_details.txt industry_grade_project/
-sed '1d' industry_grade_project/futurecart_employee_details.txt > industry_grade_project/Cfuturecart_employee_details.txt
-hdfs dfs -rm industry_grade_project/futurecart_employee_details.txt
-hdfs dfs -put industry_grade_project/Cfuturecart_employee_details.txt industry_grade_project/futurecart_employee_details.txt
+hdfs dfs -get industryGradeProject/futurecart_product_details.txt industryGradeProject/
+sed '1d' industryGradeProject/futurecart_product_details.txt > industryGradeProject/Cfuturecart_product_details.txt
+hdfs dfs -rm industryGradeProject/futurecart_product_details.txt
+hdfs dfs -put industryGradeProject/Cfuturecart_product_details.txt industryGradeProject/futurecart_product_details.txt
 
-hdfs dfs -copyToLocal industry_grade_project/futurecart_product_details.txt industry_grade_project/
-sed '1d' industry_grade_project/futurecart_product_details.txt > industry_grade_project/Cfuturecart_product_details.txt
-hdfs dfs -rm industry_grade_project/futurecart_product_details.txt
-hdfs dfs -put industry_grade_project/Cfuturecart_product_details.txt industry_grade_project/futurecart_product_details.txt
-
-hdfs dfs -copyToLocal industry_grade_project/futurecart_survey_question_details.txt industry_grade_project/
-sed '1d' industry_grade_project/futurecart_survey_question_details.txt > industry_grade_project/Cfuturecart_survey_question_details.txt
-hdfs dfs -rm industry_grade_project/futurecart_survey_question_details.txt
-hdfs dfs -put industry_grade_project/Cfuturecart_survey_question_details.txt industry_grade_project/futurecart_survey_question_details.txt
-
-sh remover_header_dim.sh
+hdfs dfs -get industryGradeProject/futurecart_survey_question_details.txt industryGradeProject/
+sed '1d' industryGradeProject/futurecart_survey_question_details.txt > industryGradeProject/Cfuturecart_survey_question_details.txt
+hdfs dfs -rm industryGradeProject/futurecart_survey_question_details.txt
+hdfs dfs -put industryGradeProject/Cfuturecart_survey_question_details.txt industryGradeProject/futurecart_survey_question_details.txt
 
 
 
 +++++++++++++ Loading cleansed Data into MySQl +++++++++++++
-/// creating edureka_653389_futurecart_calendar_details table in MySQl ///
+/// creating edureka_738583_futurecart_calendar_details table in MySQl ///
 
 sqoop eval --connect jdbc:mysql://dbserver.edu.cloudlab.com/labuser_database \
---query "create table edureka_653389_futurecart_calendar_details( \
+--query "create table edureka_738583_futurecart_calendar_details( \
 calendar_date date, \
 date_desc varchar(50), \
 week_day_nbr int, \
@@ -79,22 +74,22 @@ geo_region_cd char(2))" \
 
 
 
-/// loading data into edureka_653389_futurecart_calendar_details table in MySQl ///
+/// loading data into edureka_738583_futurecart_calendar_details table in MySQl ///
 
 sqoop export --connect jdbc:mysql://dbserver.edu.cloudlab.com/labuser_database \
 --username edu_labuser \
 --password edureka \
---table edureka_653389_futurecart_calendar_details \
+--table edureka_738583_futurecart_calendar_details \
 --input-fields-terminated-by '\t' \
---export-dir /user/edureka_653389/industry_grade_project/futurecart_calendar_details.txt \
+--export-dir /user/edureka_738583/industryGradeProject/futurecart_calendar_details.txt \
 -m 1
 
 
 
-/// creating edureka_653389_futurecart_call_center_details table in MySQl ///
+/// creating edureka_738583_futurecart_call_center_details table in MySQl ///
 
 sqoop eval --connect jdbc:mysql://dbserver.edu.cloudlab.com/labuser_database \
---query "create table edureka_653389_futurecart_call_center_details( \
+--query "create table edureka_738583_futurecart_call_center_details( \
 call_center_id varchar(10), \
 call_center_vendor varchar(50), \
 location varchar(50), \
@@ -104,22 +99,22 @@ country varchar(50))" \
 
 
 
-/// loading data into edureka_653389_futurecart_call_center_details table in MySQl ///
+/// loading data into edureka_738583_futurecart_call_center_details table in MySQl ///
 
 sqoop export --connect jdbc:mysql://dbserver.edu.cloudlab.com/labuser_database \
 --username edu_labuser \
 --password edureka \
---table edureka_653389_futurecart_call_center_details \
+--table edureka_738583_futurecart_call_center_details \
 --input-fields-terminated-by '\t' \
---export-dir /user/edureka_653389/industry_grade_project/futurecart_call_center_details.txt \
+--export-dir /user/edureka_738583/industryGradeProject/futurecart_call_center_details.txt \
 -m 1
 
 
 
-/// creating edureka_653389_futurecart_case_category_details table in MySQl ///
+/// creating edureka_738583_futurecart_case_category_details table in MySQl ///
 
 sqoop eval --connect jdbc:mysql://dbserver.edu.cloudlab.com/labuser_database \
---query "create table edureka_653389_futurecart_case_category_details( \
+--query "create table edureka_738583_futurecart_case_category_details( \
 category_key varchar(10), \
 sub_category_key varchar(10), \
 category_description varchar(50), \
@@ -130,22 +125,22 @@ priority varchar(10))" \
 
 
 
-/// loading data into edureka_653389_futurecart_case_category_details table in MySQl ///
+/// loading data into edureka_738583_futurecart_case_category_details table in MySQl ///
 
 sqoop export --connect jdbc:mysql://dbserver.edu.cloudlab.com/labuser_database \
 --username edu_labuser \
 --password edureka \
---table edureka_653389_futurecart_case_category_details \
+--table edureka_738583_futurecart_case_category_details \
 --input-fields-terminated-by '\t' \
---export-dir /user/edureka_653389/industry_grade_project/futurecart_case_category_details.txt \
+--export-dir /user/edureka_738583/industryGradeProject/futurecart_case_category_details.txt \
 -m 1
 
 
 
-/// creating edureka_653389_futurecart_case_country_details table in MySQl ///
+/// creating edureka_738583_futurecart_case_country_details table in MySQl ///
 
 sqoop eval --connect jdbc:mysql://dbserver.edu.cloudlab.com/labuser_database \
---query "create table edureka_653389_futurecart_case_country_details( \
+--query "create table edureka_738583_futurecart_case_country_details( \
 id int, \
 Name varchar(75), \
 Alpha_2 varchar(2), \
@@ -155,22 +150,22 @@ Alpha_3 varchar(3))" \
 
 
 
-/// loading data into edureka_653389_futurecart_case_country_details table in MySQl ///
+/// loading data into edureka_738583_futurecart_case_country_details table in MySQl ///
 
 sqoop export --connect jdbc:mysql://dbserver.edu.cloudlab.com/labuser_database \
 --username edu_labuser \
 --password edureka \
---table edureka_653389_futurecart_case_country_details \
+--table edureka_738583_futurecart_case_country_details \
 --input-fields-terminated-by '\t' \
---export-dir /user/edureka_653389/industry_grade_project/futurecart_case_country_details.txt \
+--export-dir /user/edureka_738583/industryGradeProject/futurecart_case_country_details.txt \
 -m 1
 
 
 
-/// creating edureka_653389_futurecart_case_priority_details table in MySQl ///
+/// creating edureka_738583_futurecart_case_priority_details table in MySQl ///
 
 sqoop eval --connect jdbc:mysql://dbserver.edu.cloudlab.com/labuser_database \
---query "create table edureka_653389_futurecart_case_priority_details( \
+--query "create table edureka_738583_futurecart_case_priority_details( \
 Priority_key varchar(5), \
 priority varchar(20), \
 severity varchar(100), \
@@ -180,22 +175,22 @@ SLA varchar(100))" \
 
 
 
-/// loading data into edureka_653389_futurecart_case_priority_details table in MySQl ///
+/// loading data into edureka_738583_futurecart_case_priority_details table in MySQl ///
 
 sqoop export --connect jdbc:mysql://dbserver.edu.cloudlab.com/labuser_database \
 --username edu_labuser \
 --password edureka \
---table edureka_653389_futurecart_case_priority_details \
+--table edureka_738583_futurecart_case_priority_details \
 --input-fields-terminated-by '\t' \
---export-dir /user/edureka_653389/industry_grade_project/futurecart_case_priority_details.txt \
+--export-dir /user/edureka_738583/industryGradeProject/futurecart_case_priority_details.txt \
 -m 1
 
 
 
-/// creating edureka_653389_futurecart_employee_details table in MySQl ///
+/// creating edureka_738583_futurecart_employee_details table in MySQl ///
 
 sqoop eval --connect jdbc:mysql://dbserver.edu.cloudlab.com/labuser_database \
---query "create table edureka_653389_futurecart_employee_details( \
+--query "create table edureka_738583_futurecart_employee_details( \
 emp_key Int, \
 first_name varchar(50), \
 last_name varchar(50), \
@@ -209,22 +204,22 @@ manager varchar(50))" \
 
 
 
-/// loading data into edureka_653389_futurecart_employee_details table in MySQl ///
+/// loading data into edureka_738583_futurecart_employee_details table in MySQl ///
 
 sqoop export --connect jdbc:mysql://dbserver.edu.cloudlab.com/labuser_database \
 --username edu_labuser \
 --password edureka \
---table edureka_653389_futurecart_employee_details \
+--table edureka_738583_futurecart_employee_details \
 --input-fields-terminated-by '\t' \
---export-dir /user/edureka_653389/industry_grade_project/futurecart_employee_details.txt \
+--export-dir /user/edureka_738583/industryGradeProject/futurecart_employee_details.txt \
 -m 1
 
 
 
-/// creating edureka_653389_futurecart_product_details table in MySQl ///
+/// creating edureka_738583_futurecart_product_details table in MySQl ///
 
 sqoop eval --connect jdbc:mysql://dbserver.edu.cloudlab.com/labuser_database \
---query "create table edureka_653389_futurecart_product_details( \
+--query "create table edureka_738583_futurecart_product_details( \
 product_id varchar(50), \
 department varchar(50), \
 brand varchar(50), \
@@ -235,22 +230,22 @@ sub_commodity_desc varchar(50))" \
 
 
 
-/// loading data into edureka_653389_futurecart_product_details table in MySQl ///
+/// loading data into edureka_738583_futurecart_product_details table in MySQl ///
 
 sqoop export --connect jdbc:mysql://dbserver.edu.cloudlab.com/labuser_database \
 --username edu_labuser \
 --password edureka \
---table edureka_653389_futurecart_product_details \
+--table edureka_738583_futurecart_product_details \
 --input-fields-terminated-by '\t' \
---export-dir /user/edureka_653389/industry_grade_project/futurecart_product_details.txt \
+--export-dir /user/edureka_738583/industryGradeProject/futurecart_product_details.txt \
 -m 1
 
 
 
-/// creating edureka_653389_futurecart_survey_question_details table in MySQl ///
+/// creating edureka_738583_futurecart_survey_question_details table in MySQl ///
 
 sqoop eval --connect jdbc:mysql://dbserver.edu.cloudlab.com/labuser_database \
---query "create table edureka_653389_futurecart_survey_question_details( \
+--query "create table edureka_738583_futurecart_survey_question_details( \
 question_id varchar(50), \
 question_desc varchar(500), \
 response_type varchar(50), \
@@ -263,14 +258,14 @@ positive_response_range varchar(50))" \
 
 
 
-/// loading data into edureka_653389_futurecart_survey_question_details table in MySQl ///
+/// loading data into edureka_738583_futurecart_survey_question_details table in MySQl ///
 
 sqoop export --connect jdbc:mysql://dbserver.edu.cloudlab.com/labuser_database \
 --username edu_labuser \
 --password edureka \
---table edureka_653389_futurecart_survey_question_details \
+--table edureka_738583_futurecart_survey_question_details \
 --input-fields-terminated-by '\t' \
---export-dir /user/edureka_653389/industry_grade_project/futurecart_survey_question_details.txt \
+--export-dir /user/edureka_738583/industryGradeProject/futurecart_survey_question_details.txt \
 -m 1
 
 
@@ -282,10 +277,10 @@ sqoop export --connect jdbc:mysql://dbserver.edu.cloudlab.com/labuser_database \
 sqoop import --connect jdbc:mysql://dbserver.edu.cloudlab.com/labuser_database \
 --username edu_labuser \
 --password edureka \
---table edureka_653389_futurecart_calendar_details \
+--table edureka_738583_futurecart_calendar_details \
 --hive-import \
 --create-hive-table \
---hive-table edureka_653389.futurecart_calendar_details_stg \
+--hive-table edureka_738583.futurecart_calendar_details_stg \
 --fields-terminated-by '\t' \
 -m 1
 
@@ -293,7 +288,7 @@ sqoop import --connect jdbc:mysql://dbserver.edu.cloudlab.com/labuser_database \
 
 /// creating and inserting data into temp table by adding row_insertion_dttm and create_date ///
 
-CREATE TABLE IF NOT EXISTS edureka_653389.futurecart_calendar_details STORED AS ORC AS SELECT stg.*, current_timestamp() as row_insertion_dttm from edureka_653389.futurecart_calendar_details_stg stg;
+CREATE TABLE IF NOT EXISTS edureka_738583.futurecart_calendar_details STORED AS ORC AS SELECT stg.*, current_timestamp() as row_insertion_dttm from edureka_738583.futurecart_calendar_details_stg stg;
 
 
 
@@ -303,10 +298,10 @@ CREATE TABLE IF NOT EXISTS edureka_653389.futurecart_calendar_details STORED AS 
 sqoop import --connect jdbc:mysql://dbserver.edu.cloudlab.com/labuser_database \
 --username edu_labuser \
 --password edureka \
---table edureka_653389_futurecart_call_center_details \
+--table edureka_738583_futurecart_call_center_details \
 --hive-import \
 --create-hive-table \
---hive-table edureka_653389.futurecart_call_center_details_stg \
+--hive-table edureka_738583.futurecart_call_center_details_stg \
 --fields-terminated-by '\t' \
 -m 1
 
@@ -314,7 +309,7 @@ sqoop import --connect jdbc:mysql://dbserver.edu.cloudlab.com/labuser_database \
 
 /// creating and inserting data into temp table by adding row_insertion_dttm and create_date ///
 
-CREATE TABLE IF NOT EXISTS edureka_653389.futurecart_call_center_details STORED AS ORC AS SELECT stg.*, current_timestamp() as row_insertion_dttm from edureka_653389.futurecart_call_center_details_stg stg;
+CREATE TABLE IF NOT EXISTS edureka_738583.futurecart_call_center_details STORED AS ORC AS SELECT stg.*, current_timestamp() as row_insertion_dttm from edureka_738583.futurecart_call_center_details_stg stg;
 
 
 
@@ -324,10 +319,10 @@ CREATE TABLE IF NOT EXISTS edureka_653389.futurecart_call_center_details STORED 
 sqoop import --connect jdbc:mysql://dbserver.edu.cloudlab.com/labuser_database \
 --username edu_labuser \
 --password edureka \
---table edureka_653389_futurecart_case_category_details \
+--table edureka_738583_futurecart_case_category_details \
 --hive-import \
 --create-hive-table \
---hive-table edureka_653389.futurecart_case_category_details_stg \
+--hive-table edureka_738583.futurecart_case_category_details_stg \
 --fields-terminated-by '\t' \
 -m 1
 
@@ -335,7 +330,7 @@ sqoop import --connect jdbc:mysql://dbserver.edu.cloudlab.com/labuser_database \
 
 /// creating and inserting data into temp table by adding row_insertion_dttm and create_date ///
 
-CREATE TABLE IF NOT EXISTS edureka_653389.futurecart_case_category_details STORED AS ORC AS SELECT stg.*, current_timestamp() as row_insertion_dttm from edureka_653389.futurecart_case_category_details_stg stg;
+CREATE TABLE IF NOT EXISTS edureka_738583.futurecart_case_category_details STORED AS ORC AS SELECT stg.*, current_timestamp() as row_insertion_dttm from edureka_738583.futurecart_case_category_details_stg stg;
 
 
 /// futurecart_case_country_details ///
@@ -344,10 +339,10 @@ CREATE TABLE IF NOT EXISTS edureka_653389.futurecart_case_category_details STORE
 sqoop import --connect jdbc:mysql://dbserver.edu.cloudlab.com/labuser_database \
 --username edu_labuser \
 --password edureka \
---table edureka_653389_futurecart_case_country_details \
+--table edureka_738583_futurecart_case_country_details \
 --hive-import \
 --create-hive-table \
---hive-table edureka_653389.futurecart_case_country_details_stg \
+--hive-table edureka_738583.futurecart_case_country_details_stg \
 --fields-terminated-by '\t' \
 -m 1
 
@@ -355,7 +350,7 @@ sqoop import --connect jdbc:mysql://dbserver.edu.cloudlab.com/labuser_database \
 
 /// creating and inserting data into temp table by adding row_insertion_dttm and create_date ///
 
-CREATE TABLE IF NOT EXISTS edureka_653389.futurecart_case_country_details STORED AS ORC AS SELECT stg.*, current_timestamp() as row_insertion_dttm from edureka_653389.futurecart_case_country_details_stg stg;
+CREATE TABLE IF NOT EXISTS edureka_738583.futurecart_case_country_details STORED AS ORC AS SELECT stg.*, current_timestamp() as row_insertion_dttm from edureka_738583.futurecart_case_country_details_stg stg;
 
 
 
@@ -365,10 +360,10 @@ CREATE TABLE IF NOT EXISTS edureka_653389.futurecart_case_country_details STORED
 sqoop import --connect jdbc:mysql://dbserver.edu.cloudlab.com/labuser_database \
 --username edu_labuser \
 --password edureka \
---table edureka_653389_futurecart_case_priority_details \
+--table edureka_738583_futurecart_case_priority_details \
 --hive-import \
 --create-hive-table \
---hive-table edureka_653389.futurecart_case_priority_details_stg \
+--hive-table edureka_738583.futurecart_case_priority_details_stg \
 --fields-terminated-by '\t' \
 -m 1
 
@@ -376,7 +371,7 @@ sqoop import --connect jdbc:mysql://dbserver.edu.cloudlab.com/labuser_database \
 
 /// creating and inserting data into temp table by adding row_insertion_dttm and create_date ///
 
-CREATE TABLE IF NOT EXISTS edureka_653389.futurecart_case_priority_details STORED AS ORC AS SELECT stg.*, current_timestamp() as row_insertion_dttm from edureka_653389.futurecart_case_priority_details_stg stg;
+CREATE TABLE IF NOT EXISTS edureka_738583.futurecart_case_priority_details STORED AS ORC AS SELECT stg.*, current_timestamp() as row_insertion_dttm from edureka_738583.futurecart_case_priority_details_stg stg;
 
 
 
@@ -386,10 +381,10 @@ CREATE TABLE IF NOT EXISTS edureka_653389.futurecart_case_priority_details STORE
 sqoop import --connect jdbc:mysql://dbserver.edu.cloudlab.com/labuser_database \
 --username edu_labuser \
 --password edureka \
---table edureka_653389_futurecart_employee_details \
+--table edureka_738583_futurecart_employee_details \
 --hive-import \
 --create-hive-table \
---hive-table edureka_653389.futurecart_employee_details_stg \
+--hive-table edureka_738583.futurecart_employee_details_stg \
 --fields-terminated-by '\t' \
 -m 1
 
@@ -397,7 +392,7 @@ sqoop import --connect jdbc:mysql://dbserver.edu.cloudlab.com/labuser_database \
 
 /// creating and inserting data into temp table by adding row_insertion_dttm and create_date ///
 
-CREATE TABLE IF NOT EXISTS edureka_653389.futurecart_employee_details STORED AS ORC AS SELECT stg.*, current_timestamp() as row_insertion_dttm from edureka_653389.futurecart_employee_details_stg stg;
+CREATE TABLE IF NOT EXISTS edureka_738583.futurecart_employee_details STORED AS ORC AS SELECT stg.*, current_timestamp() as row_insertion_dttm from edureka_738583.futurecart_employee_details_stg stg;
 
 
 
@@ -407,10 +402,10 @@ CREATE TABLE IF NOT EXISTS edureka_653389.futurecart_employee_details STORED AS 
 sqoop import --connect jdbc:mysql://dbserver.edu.cloudlab.com/labuser_database \
 --username edu_labuser \
 --password edureka \
---table edureka_653389_futurecart_product_details \
+--table edureka_738583_futurecart_product_details \
 --hive-import \
 --create-hive-table \
---hive-table edureka_653389.futurecart_product_details_stg \
+--hive-table edureka_738583.futurecart_product_details_stg \
 --fields-terminated-by '\t' \
 -m 1
 
@@ -418,7 +413,7 @@ sqoop import --connect jdbc:mysql://dbserver.edu.cloudlab.com/labuser_database \
 
 /// creating and inserting data into temp table by adding row_insertion_dttm and create_date ///
 
-CREATE TABLE IF NOT EXISTS edureka_653389.futurecart_product_details STORED AS ORC AS SELECT stg.*, current_timestamp() as row_insertion_dttm from edureka_653389.futurecart_product_details_stg stg;
+CREATE TABLE IF NOT EXISTS edureka_738583.futurecart_product_details STORED AS ORC AS SELECT stg.*, current_timestamp() as row_insertion_dttm from edureka_738583.futurecart_product_details_stg stg;
 
 
 
@@ -428,10 +423,10 @@ CREATE TABLE IF NOT EXISTS edureka_653389.futurecart_product_details STORED AS O
 sqoop import --connect jdbc:mysql://dbserver.edu.cloudlab.com/labuser_database \
 --username edu_labuser \
 --password edureka \
---table edureka_653389_futurecart_survey_question_details \
+--table edureka_738583_futurecart_survey_question_details \
 --hive-import \
 --create-hive-table \
---hive-table edureka_653389.futurecart_survey_question_details_stg \
+--hive-table edureka_738583.futurecart_survey_question_details_stg \
 --fields-terminated-by '\t' \
 -m 1
 
@@ -439,5 +434,5 @@ sqoop import --connect jdbc:mysql://dbserver.edu.cloudlab.com/labuser_database \
 
 /// creating and inserting data into temp table by adding row_insertion_dttm and create_date ///
 
-CREATE TABLE IF NOT EXISTS edureka_653389.futurecart_survey_question_details STORED AS ORC AS SELECT stg.*, current_timestamp() as row_insertion_dttm from edureka_653389.futurecart_survey_question_details_stg stg;
+CREATE TABLE IF NOT EXISTS edureka_738583.futurecart_survey_question_details STORED AS ORC AS SELECT stg.*, current_timestamp() as row_insertion_dttm from edureka_738583.futurecart_survey_question_details_stg stg;
 

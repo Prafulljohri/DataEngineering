@@ -5,7 +5,7 @@ mkdir streaming/src
 mkdir streaming/src/main
 mkdir streaming/src/main/scala
 
-vi industry_grade_project/streaming/build.sbt
+vi industryGradeProject/streaming/build.sbt
 
 name := "stream"
 description := ""
